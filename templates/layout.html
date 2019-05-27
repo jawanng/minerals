@@ -1,0 +1,29 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jawann's Minerals</title>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'image/yellow-tinted-diamond-crystal-alrosa-large.jpg' %}">
+</head>
+<body>
+    <div class="bounds{% if gem %} bounds--small{% endif %}">
+        <div class="grid-100">
+            <a href="{% url 'index' %}">
+                <img alt="Diamond" class="logo" src="{% static 'image/yellow-tinted-diamond-crystal-alrosa-large.jpg' %}">
+                <h1 class="logo__name text-centered">Jawann's Minerals</h1>
+            </a>
+            <p class="logo__text text-centered">They're more than just diamonds!</p>
+        </div>
+    `   <div class="grid-100{% if gem %} mineral__container{% endif %}">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <div class="minerals__random">
+        <a class="minerals__anchor" href="{% url 'random' %}">Show random mineral</a>
+    </div>
+</body>
+</html>

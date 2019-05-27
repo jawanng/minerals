@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <ul class="minerals__container">
+    {% for gem in gems %}
+        <li class="minerals__item">
+            <a class="minerals__anchor" href="{% url 'detail' name=gem.name %}">{{ gem }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

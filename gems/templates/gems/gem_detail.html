@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% load gem_extras %}
+{% load static from staticfiles %}
+
+{% block content %}
+    <h1 class="mineral__name">{{ obj.name }}</h1>
+    <div class="mineral__image-bg">
+        <!-- build the image link and call -->
+        {% with 'image/'|add:obj.image_filename as image %}
+            <img src="{% static image %}" alt="{{ obj.image_caption }}">
+        {% endwith %}
+        <p class="mineral__caption">{{ obj.image_caption }}</p>
+        <div class="mineral__table-container">
+            <table class="mineral__table">
+                {% for key, value in gem %}
+                    {% if key not in blacklist and value != None and value != "" %}
+                        <tr>
+                            <td class="mineral__category">{{ key|title|underscore }}</td>
+                            <td>{{ value|safe }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
